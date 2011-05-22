@@ -125,6 +125,9 @@ module SimpleNavigation
         self.primary_navigation
       when :leaves
         self.primary_navigation.active_leaf_container
+      when :last_non_leaf
+        leaf = self.primary_navigation.active_leaf_container
+        self.primary_navigation.active_item_container_for(leaf.level - 1) 
       when Integer
         self.primary_navigation.active_item_container_for(level)
       when Range
