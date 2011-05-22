@@ -54,6 +54,8 @@ module SimpleNavigation
         case level
         when :all
           return true
+        when :last_non_leaf
+          return true
         when Integer
           return false
         when Range
