@@ -34,8 +34,12 @@ module SimpleNavigation
       end
       
       def current_page?(url)
-        template.current_page?(url) if template
-      end
+        begin
+          template.current_page?(url) if template
+        rescue ActionController::RoutingError
+          false #we are on a 404 page
+        end
+       end
       
       def link_to(name, url, options={})
         template.link_to(html_safe(name), url, options) if template
